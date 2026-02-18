@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "domain": "github.com",
+    "generated_at": "2026-02-18 13:47:38",
+    "total_subdomains": 51,
+    "total_urls": 0,
+    "total_leaks": 20,
+    "total_hosts": 0,
+    "total_emails": 0,
+    "total_techs": 1
+  },
+  "subdomains": [
+    "cdn-185-199-109-154.github.com",
+    "f.cloud.github.com",
+    "cdn-185-199-108-154.github.com",
+    "de.github.com",
+    "developer.github.com",
+    "bounty.github.com",
+    "collector.github.com",
+    "bug-bash.github.com",
+    "accelerator.github.com",
+    "admin.github.com",
+    "diversity.github.com",
+    "cdn-185-199-110-153.github.com",
+    "cdn-185-199-111-153.github.com",
+    "action.github.com",
+    "cdn-185-199-108-153.github.com",
+    "cdn-185-199-111-154.github.com",
+    "blog-freeze.github.com",
+    "community.github.com",
+    "data-science.github.com",
+    "campus.github.com",
+    "desktop.github.com",
+    "cli.github.com",
+    "customer-stories-feed.github.com",
+    "cdn-185-199-109-153.github.com",
+    "docs-internal.github.com",
+    "classroom.github.com",
+    "developers.github.com",
+    "accessibility-playbook.github.com",
+    "brand.github.com",
+    "cdn-185-199-109-133.github.com",
+    "codeload.github.com",
+    "collector-cdn.github.com",
+    "accessibility.github.com",
+    "cdn-185-199-110-133.github.com",
+    "cdn-185-199-111-133.github.com",
+    "central.github.com",
+    "docs.github.com",
+    "alive.github.com",
+    "cs.github.com",
+    "alive-staging.github.com",
+    "asset-generator.github.com",
+    "codeql.github.com",
+    "api.github.com",
+    "archiveprogram.github.com",
+    "boxen.github.com",
+    "copilot.github.com",
+    "atom-installer.github.com",
+    "cdn-185-199-108-133.github.com",
+    "cxr.github.com",
+    "blog.github.com",
+    "github.com"
+  ],
+  "wayback_urls": [],
+  "github_leaks": [
+    {
+      "url": "https://github.com/videolan/libvlcsharp/blob/4badd9ff352cc0824a3eafd20c7e660a89bba879/NEWS",
+      "repo": "videolan/libvlcsharp",
+      "query": "\"github.com\" password"
+    },
+    {
+      "url": "https://github.com/containers/toolbox/blob/a78d7241da32f319cd49e4baab8e660ec4ca4d96/NEWS.old",
+      "repo": "containers/toolbox",
+      "query": "\"github.com\" password"
+    },
+    {
+      "url": "https://github.com/killgcd/justmysocks/blob/d05e19bd77e314753b3e5b3f86f1227d80c07389/en.md",
+      "repo": "killgcd/justmysocks",
+      "query": "\"github.com\" password"
+    },
+    {
+      "url": "https://github.com/beagreatengineer/how-to-develop-perfect-crud/blob/840ae0f0bdfd1158f035c7010b34291d9f9921b7/EN.md",
+      "repo": "beagreatengineer/how-to-develop-perfect-crud",
+      "query": "\"github.com\" password"
+    },
+    {
+      "url": "https://github.com/lewagon/data-setup/blob/79d0961e3fd8e8863f09ccb70dea7755bb3477c8/VM.md",
+      "repo": "lewagon/data-setup",
+      "query": "\"github.com\" password"
+    },
+    {
+      "url": "https://github.com/alexeymezenin/laravel-best-practices/blob/2bdce1396b292085665f1ee9cb012b66a8ffe216/thai.md",
+      "repo": "alexeymezenin/laravel-best-practices",
+      "query": "\"github.com\" api_key"
+    },
+    {
+      "url": "https://github.com/altair-graphql/altair/blob/fa814eed44a1caf65cdf30ec119ab7189a3e2e7e/DEV.md",
+      "repo": "altair-graphql/altair",
+      "query": "\"github.com\" api_key"
+    },
+    {
+      "url": "https://github.com/sanand0/tools-in-data-science-public/blob/7dbd9ad483dd6b7ea06b542e7607c7cccb0cd546/llm.md",
+      "repo": "sanand0/tools-in-data-science-public",
+      "query": "\"github.com\" api_key"
+    },
+    {
+      "url": "https://github.com/bramkragten/weather-card/blob/b020ae520c5cef5722478a190c819243b08e7316/info.md",
+      "repo": "bramkragten/weather-card",
+      "query": "\"github.com\" api_key"
+    },
+    {
+      "url": "https://github.com/facebookresearch/MLGym/blob/9d40c1b5035202018cd7091fb4e83a9c68b377c0/README.md",
+      "repo": "facebookresearch/MLGym",
+      "query": "\"github.com\" api_key"
+    },
+    {
+      "url": "https://github.com/ty4z2008/Qix/blob/86590e563cb69c6f44b10fb645c227c16873e71d/pg.md",
+      "repo": "ty4z2008/Qix",
+      "query": "\"github.com\" secret"
+    },
+    {
+      "url": "https://github.com/googleapis/google-cloud-ruby/blob/95481ad68b1aaaa1a30f7723a2604e3ff949cb60/CI.md",
+      "repo": "googleapis/google-cloud-ruby",
+      "query": "\"github.com\" secret"
+    },
+    {
+      "url": "https://github.com/steven-tey/extrapolate/blob/90031932a6492e15ee92ae16a9d9e9271440f2c3/PR.md",
+      "repo": "steven-tey/extrapolate",
+      "query": "\"github.com\" secret"
+    },
+    {
+      "url": "https://github.com/IJHack/QtPass/blob/64a926a0e9e96e85b3f2d958de833e1fd7a0f351/FAQ.md",
+      "repo": "IJHack/QtPass",
+      "query": "\"github.com\" secret"
+    },
+    {
+      "url": "https://github.com/Jamie-Cui/awesome-secure-computation/blob/c1104e0fb5f16e305450796a8312db54db187e8e/he.md",
+      "repo": "Jamie-Cui/awesome-secure-computation",
+      "query": "\"github.com\" secret"
+    },
+    {
+      "url": "https://github.com/ty4z2008/Qix/blob/86590e563cb69c6f44b10fb645c227c16873e71d/dl.md",
+      "repo": "ty4z2008/Qix",
+      "query": "\"github.com\" token"
+    },
+    {
+      "url": "https://github.com/MrXujiang/h5-Dooring/blob/85a184a72bd9f3d81bf16b43d1ea8a26bcdd9f38/zh.md",
+      "repo": "MrXujiang/h5-Dooring",
+      "query": "\"github.com\" token"
+    },
+    {
+      "url": "https://github.com/adambard/learnxinyminutes-docs/blob/08426157ddf882af689cea0a3d62b4034d7077d8/v.md",
+      "repo": "adambard/learnxinyminutes-docs",
+      "query": "\"github.com\" token"
+    },
+    {
+      "url": "https://github.com/ndilieto/uacme/blob/81e822bdef8ebbaa6c90b4e29c72724f7b7a50f4/NEWS",
+      "repo": "ndilieto/uacme",
+      "query": "\"github.com\" token"
+    },
+    {
+      "url": "https://github.com/hijiangtao/glmaps/blob/b8e7f4f1d9e8a47d95695800e18f04f3a5f3331f/CN.md",
+      "repo": "hijiangtao/glmaps",
+      "query": "\"github.com\" token"
+    }
+  ],
+  "shodan": {
+    "subdomains": [],
+    "hosts": []
+  },
+  "dns": {
+    "A": [
+      "140.82.121.4"
+    ],
+    "MX": [
+      "5 alt1.aspmx.l.google.com.",
+      "1 aspmx.l.google.com.",
+      "5 alt2.aspmx.l.google.com.",
+      "10 alt4.aspmx.l.google.com.",
+      "10 alt3.aspmx.l.google.com."
+    ],
+    "NS": [
+      "dns1.p08.nsone.net.",
+      "ns-1707.awsdns-21.co.uk.",
+      "dns4.p08.nsone.net.",
+      "dns2.p08.nsone.net.",
+      "ns-1283.awsdns-32.org.",
+      "ns-520.awsdns-01.net.",
+      "ns-421.awsdns-52.com.",
+      "dns3.p08.nsone.net."
+    ],
+    "TXT": [
+      "v=spf1 ip4:192.30.252.0/22 include:_netblocks.google.com include:_netblocks2.google.com include:_netblocks3.google.com include:spf.protection.outlook.com include:mail.zendesk.com include:_spf.salesforce.com include:servers.mcsv.net include:mktomail.com ip4:62.253.227.114 ip4:166.78.69.169 ip4:166.78.69.170 ip4:166.78.71.131 ip4:167.89.101.2 ip4:167.89.101.192/28 ip4:192.254.112.60 ip4:192.254.112.98/31 ip4:192.254.113.10 ip4:192.254.113.101 ip4:192.254.114.176  ~all",
+      "shopify-verification-code=t1YPwcmvnxZyBycaCpk1MPyWoFs72o",
+      "calendly-site-verification=at0DQARi7IZvJtXQAWhMqpmIzpvoBNF7aam5VKKxP",
+      "miro-verification=d2e174fdb00c71e0bcf58f8e58c3da2dd80dcfa9",
+      "krisp-domain-verification=ZlyiK7XLhnaoUQb2hpak1PLY7dFkl1WE",
+      "TAILSCALE-xOzoDvFUzZr5YYVCQFuD",
+      "google-site-verification=UTM-3akMgubp6tQtgEuAkYNYLyYAvpTnnSrDMWoDR3o",
+      "docusign=087098e3-3d46-47b7-9b4e-8a23028154cd",
+      "atlassian-domain-verification=jjgw98AKv2aeoYFxiL/VFaoyPkn3undEssTRuMg6C/3Fp/iqhkV4HVV7WjYlVeF8",
+      "jamf-site-verification=XtaPNIYghF_e_xRDI8CjgQ",
+      "adobe-idp-site-verification=b92c9e999aef825edc36e0a3d847d2dbad5b2fc0e05c79ddd7a16139b48ecf4b",
+      "loom-site-verification=f3787154f1154b7880e720a511ea664d",
+      "google-site-verification=82Le34Flgtd15ojYhHlGF_6g72muSjamlMVThBOJpks",
+      "MS=6BF03E6AF5CB689E315FB6199603BABF2C88D805",
+      "MS=ms58704441",
+      "apple-domain-verification=RyQhdzTl6Z6x8ZP4",
+      "facebook-domain-verification=39xu4jzl7roi7x0n93ldkxjiaarx50",
+      "stripe-verification=f88ef17321660a01bab1660454192e014defa29ba7b8de9633c69d6b4912217f",
+      "MS=ms44452932"
+    ],
+    "AAAA": []
+  },
+  "emails": [],
+  "technologies": [
+    "React"
+  ],
+  "whois": {
+    "registrar": "MarkMonitor, Inc.",
+    "creation_date": "2007-10-09 18:20:50+00:00",
+    "expiration_date": "2026-10-09 18:20:50+00:00",
+    "updated_date": "2024-09-07 09:16:32+00:00",
+    "name_servers": [
+      "DNS1.P08.NSONE.NET",
+      "DNS2.P08.NSONE.NET",
+      "DNS3.P08.NSONE.NET",
+      "DNS4.P08.NSONE.NET",
+      "NS-1283.AWSDNS-32.ORG",
+      "NS-1707.AWSDNS-21.CO.UK",
+      "NS-421.AWSDNS-52.COM",
+      "NS-520.AWSDNS-01.NET"
+    ],
+    "country": "US",
+    "org": "GitHub, Inc."
+  }
+}

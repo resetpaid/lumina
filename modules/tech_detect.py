@@ -12,13 +12,12 @@ SIGNATURES = {
     "Django": ["csrfmiddlewaretoken"],
 }
 
+
 async def detect_tech(domain: str):
     detected = []
     try:
         async with httpx.AsyncClient(
-            timeout=10,
-            follow_redirects=True,
-            headers={"User-Agent": "Mozilla/5.0"}
+            timeout=10, follow_redirects=True, headers={"User-Agent": "Mozilla/5.0"}
         ) as client:
             r = await client.get(f"https://{domain}")
             content = r.text.lower()

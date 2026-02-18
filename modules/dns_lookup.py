@@ -1,5 +1,6 @@
 import httpx
 
+
 async def dns_lookup(domain: str):
     record_types = ["A", "MX", "NS", "TXT", "AAAA"]
     results = {}
@@ -9,7 +10,7 @@ async def dns_lookup(domain: str):
             try:
                 r = await client.get(
                     "https://dns.google/resolve",
-                    params={"name": domain, "type": record}
+                    params={"name": domain, "type": record},
                 )
                 data = r.json()
                 answers = data.get("Answer", [])

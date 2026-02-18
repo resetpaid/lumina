@@ -2,3 +2,4 @@ httpx
 click
 jinja2
 rich
+python-whois

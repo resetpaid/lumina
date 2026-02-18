@@ -1,427 +1,483 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lumina Report -- {{ domain }}</title>
     <style>
-{% raw %}
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+      {% raw %}
+              * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        body {
-            background: #0d1117;
-            color: #c9d1d9;
-            font-family: 'Segoe UI', sans-serif;
-        }
+              body {
+                  background: #0d1117;
+                  color: #c9d1d9;
+                  font-family: 'Segoe UI', sans-serif;
+              }
 
-        header {
-            background: linear-gradient(135deg, #161b22, #1f2937);
-            border-bottom: 1px solid #30363d;
-            padding: 30px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+              header {
+                  background: linear-gradient(135deg, #161b22, #1f2937);
+                  border-bottom: 1px solid #30363d;
+                  padding: 30px 40px;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+              }
 
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            background: linear-gradient(90deg, #58a6ff, #a371f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+              .logo {
+                  font-size: 28px;
+                  font-weight: 800;
+                  background: linear-gradient(90deg, #58a6ff, #a371f7);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+              }
 
-        .meta {
-            text-align: right;
-            font-size: 13px;
-            color: #8b949e;
-        }
+              .meta {
+                  text-align: right;
+                  font-size: 13px;
+                  color: #8b949e;
+              }
 
-        .meta span {
-            color: #58a6ff;
-            font-weight: 600;
-        }
+              .meta span {
+                  color: #58a6ff;
+                  font-weight: 600;
+              }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+              .container {
+                  max-width: 1200px;
+                  margin: 0 auto;
+                  padding: 40px 20px;
+              }
 
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 40px;
-        }
+              .stats {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 16px;
+                  margin-bottom: 40px;
+              }
 
-        .stat-card {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            padding: 24px;
-            text-align: center;
-            transition: border-color 0.2s;
-        }
+              .stat-card {
+                  background: #161b22;
+                  border: 1px solid #30363d;
+                  border-radius: 12px;
+                  padding: 24px;
+                  text-align: center;
+                  transition: border-color 0.2s;
+              }
 
-        .stat-card:hover { border-color: #58a6ff; }
+              .stat-card:hover { border-color: #58a6ff; }
 
-        .stat-card .number {
-            font-size: 42px;
-            font-weight: 800;
-            background: linear-gradient(90deg, #58a6ff, #a371f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+              .stat-card .number {
+                  font-size: 42px;
+                  font-weight: 800;
+                  background: linear-gradient(90deg, #58a6ff, #a371f7);
+                  -webkit-background-clip: text;
+                  -webkit-text-fill-color: transparent;
+              }
 
-        .stat-card .label {
-            font-size: 13px;
-            color: #8b949e;
-            margin-top: 6px;
-        }
+              .stat-card .label {
+                  font-size: 13px;
+                  color: #8b949e;
+                  margin-top: 6px;
+              }
 
-        .section {
-            background: #161b22;
-            border: 1px solid #30363d;
-            border-radius: 12px;
-            margin-bottom: 24px;
-            overflow: hidden;
-        }
+              .section {
+                  background: #161b22;
+                  border: 1px solid #30363d;
+                  border-radius: 12px;
+                  margin-bottom: 24px;
+                  overflow: hidden;
+              }
 
-        .section-header {
-            padding: 16px 24px;
-            background: #1f2937;
-            border-bottom: 1px solid #30363d;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+              .section-header {
+                  padding: 16px 24px;
+                  background: #1f2937;
+                  border-bottom: 1px solid #30363d;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+              }
 
-        .section-title {
-            font-size: 16px;
-            font-weight: 600;
-            color: #e6edf3;
-        }
+              .section-title {
+                  font-size: 16px;
+                  font-weight: 600;
+                  color: #e6edf3;
+              }
 
-        .badge {
-            background: #388bfd1a;
-            color: #58a6ff;
-            border: 1px solid #388bfd66;
-            border-radius: 20px;
-            padding: 2px 12px;
-            font-size: 12px;
-            font-weight: 600;
-        }
+              .badge {
+                  background: #388bfd1a;
+                  color: #58a6ff;
+                  border: 1px solid #388bfd66;
+                  border-radius: 20px;
+                  padding: 2px 12px;
+                  font-size: 12px;
+                  font-weight: 600;
+              }
 
-        .badge.red {
-            background: #f851491a;
-            color: #ff7b72;
-            border-color: #f8514966;
-        }
+              .badge.red {
+                  background: #f851491a;
+                  color: #ff7b72;
+                  border-color: #f8514966;
+              }
 
-        .badge.green {
-            background: #2ea04326;
-            color: #3fb950;
-            border-color: #2ea04366;
-        }
+              .badge.green {
+                  background: #2ea04326;
+                  color: #3fb950;
+                  border-color: #2ea04366;
+              }
 
-        .section-body {
-            padding: 20px 24px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
+              .section-body {
+                  padding: 20px 24px;
+                  max-height: 400px;
+                  overflow-y: auto;
+              }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
+              table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  font-size: 13px;
+              }
 
-        th {
-            text-align: left;
-            padding: 10px 12px;
-            color: #8b949e;
-            border-bottom: 1px solid #30363d;
-            font-weight: 500;
-        }
+              th {
+                  text-align: left;
+                  padding: 10px 12px;
+                  color: #8b949e;
+                  border-bottom: 1px solid #30363d;
+                  font-weight: 500;
+              }
 
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #21262d;
-            word-break: break-all;
-        }
+              td {
+                  padding: 10px 12px;
+                  border-bottom: 1px solid #21262d;
+                  word-break: break-all;
+              }
 
-        tr:last-child td { border-bottom: none; }
-        tr:hover td { background: #1f2937; }
+              tr:last-child td { border-bottom: none; }
+              tr:hover td { background: #1f2937; }
 
-        a {
-            color: #58a6ff;
-            text-decoration: none;
-        }
+              a {
+                  color: #58a6ff;
+                  text-decoration: none;
+              }
 
-        a:hover { text-decoration: underline; }
+              a:hover { text-decoration: underline; }
 
-        .subdomain-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-        }
+              .subdomain-grid {
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 8px;
+              }
 
-        .subdomain-item {
-            background: #0d1117;
-            border: 1px solid #30363d;
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-size: 12px;
-            font-family: monospace;
-            color: #3fb950;
-        }
+              .subdomain-item {
+                  background: #0d1117;
+                  border: 1px solid #30363d;
+                  border-radius: 6px;
+                  padding: 8px 12px;
+                  font-size: 12px;
+                  font-family: monospace;
+                  color: #3fb950;
+              }
 
-        .empty {
-            text-align: center;
-            color: #8b949e;
-            padding: 30px;
-            font-size: 14px;
-        }
+              .empty {
+                  text-align: center;
+                  color: #8b949e;
+                  padding: 30px;
+                  font-size: 14px;
+              }
 
-        footer {
-            text-align: center;
-            padding: 30px;
-            color: #8b949e;
-            font-size: 12px;
-            border-top: 1px solid #21262d;
-        }
-{% endraw %}
+              footer {
+                  text-align: center;
+                  padding: 30px;
+                  color: #8b949e;
+                  font-size: 12px;
+                  border-top: 1px solid #21262d;
+              }
+      {% endraw %}
     </style>
-</head>
-<body>
-
-<header>
-    <div class="logo">&#9889; Lumina</div>
-    <div class="meta">
+  </head>
+  <body>
+    <header>
+      <div class="logo">&#9889; Lumina</div>
+      <div class="meta">
         <div>Target: <span>{{ domain }}</span></div>
         <div>Generated: <span>{{ generated_at }}</span></div>
-    </div>
-</header>
+      </div>
+    </header>
 
-<div class="container">
-
-    <div class="stats">
+    <div class="container">
+      <div class="stats">
         <div class="stat-card">
-            <div class="number">{{ total_subdomains }}</div>
-            <div class="label">Subdomains</div>
-        </div>
-        <div class="stat-card">
-            <div class="number">{{ total_urls }}</div>
-            <div class="label">Wayback URLs</div>
+          <div class="number">{{ total_subdomains }}</div>
+          <div class="label">Subdomains</div>
         </div>
         <div class="stat-card">
-            <div class="number">{{ total_leaks }}</div>
-            <div class="label">GitHub Leaks</div>
+          <div class="number">{{ total_urls }}</div>
+          <div class="label">Wayback URLs</div>
         </div>
         <div class="stat-card">
-            <div class="number">{{ total_hosts }}</div>
-            <div class="label">Shodan Hosts</div>
+          <div class="number">{{ total_leaks }}</div>
+          <div class="label">GitHub Leaks</div>
         </div>
         <div class="stat-card">
-            <div class="number">{{ total_emails }}</div>
-            <div class="label">Emails</div>
+          <div class="number">{{ total_hosts }}</div>
+          <div class="label">Shodan Hosts</div>
         </div>
         <div class="stat-card">
-            <div class="number">{{ total_techs }}</div>
-            <div class="label">Technologies</div>
+          <div class="number">{{ total_emails }}</div>
+          <div class="label">Emails</div>
         </div>
-    </div>
+        <div class="stat-card">
+          <div class="number">{{ total_techs }}</div>
+          <div class="label">Technologies</div>
+        </div>
+      </div>
 
-    <!-- Subdomains -->
-    <div class="section">
+      <!-- Subdomains -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#128269; Subdomains</div>
-            <span class="badge">{{ total_subdomains }}</span>
+          <div class="section-title">&#128269; Subdomains</div>
+          <span class="badge">{{ total_subdomains }}</span>
         </div>
         <div class="section-body">
-            {% if subdomains %}
-            <div class="subdomain-grid">
-                {% for sub in subdomains %}
-                <div class="subdomain-item">{{ sub }}</div>
-                {% endfor %}
-            </div>
-            {% else %}
-            <div class="empty">No subdomains found</div>
-            {% endif %}
+          {% if subdomains %}
+          <div class="subdomain-grid">
+            {% for sub in subdomains %}
+            <div class="subdomain-item">{{ sub }}</div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="empty">No subdomains found</div>
+          {% endif %}
         </div>
-    </div>
+      </div>
 
-    <!-- GitHub Leaks -->
-    <div class="section">
+      <!-- GitHub Leaks -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#128273; GitHub Leaks</div>
-            <span class="badge {% if total_leaks > 0 %}red{% else %}green{% endif %}">
-                {{ total_leaks }}
-            </span>
+          <div class="section-title">&#128273; GitHub Leaks</div>
+          <span
+            class="badge {% if total_leaks > 0 %}red{% else %}green{% endif %}"
+          >
+            {{ total_leaks }}
+          </span>
         </div>
         <div class="section-body">
-            {% if github_leaks %}
-            <table>
-                <tr>
-                    <th>Repository</th>
-                    <th>Query</th>
-                    <th>Link</th>
-                </tr>
-                {% for leak in github_leaks %}
-                <tr>
-                    <td>{{ leak.repo }}</td>
-                    <td><code>{{ leak.query }}</code></td>
-                    <td><a href="{{ leak.url }}" target="_blank">Open &rarr;</a></td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <div class="empty">&#10003; No leaks found</div>
-            {% endif %}
+          {% if github_leaks %}
+          <table>
+            <tr>
+              <th>Repository</th>
+              <th>Query</th>
+              <th>Link</th>
+            </tr>
+            {% for leak in github_leaks %}
+            <tr>
+              <td>{{ leak.repo }}</td>
+              <td><code>{{ leak.query }}</code></td>
+              <td><a href="{{ leak.url }}" target="_blank">Open &rarr;</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <div class="empty">&#10003; No leaks found</div>
+          {% endif %}
         </div>
-    </div>
+      </div>
 
-    <!-- Shodan Hosts -->
-    <div class="section">
+      <!-- Shodan Hosts -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#127760; Shodan Hosts</div>
-            <span class="badge">{{ total_hosts }}</span>
+          <div class="section-title">&#127760; Shodan Hosts</div>
+          <span class="badge">{{ total_hosts }}</span>
         </div>
         <div class="section-body">
-            {% if shodan_hosts %}
-            <table>
-                <tr>
-                    <th>IP</th>
-                    <th>Port</th>
-                    <th>Organization</th>
-                    <th>OS</th>
-                </tr>
-                {% for host in shodan_hosts %}
-                <tr>
-                    <td>{{ host.ip }}</td>
-                    <td>{{ host.ports }}</td>
-                    <td>{{ host.org }}</td>
-                    <td>{{ host.os }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <div class="empty">No hosts found</div>
-            {% endif %}
+          {% if shodan_hosts %}
+          <table>
+            <tr>
+              <th>IP</th>
+              <th>Port</th>
+              <th>Organization</th>
+              <th>OS</th>
+            </tr>
+            {% for host in shodan_hosts %}
+            <tr>
+              <td>{{ host.ip }}</td>
+              <td>{{ host.ports }}</td>
+              <td>{{ host.org }}</td>
+              <td>{{ host.os }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <div class="empty">No hosts found</div>
+          {% endif %}
         </div>
-    </div>
+      </div>
 
-    <!-- Wayback Machine URLs -->
-    <div class="section">
+      <!-- Wayback Machine URLs -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#128218; Wayback Machine URLs</div>
-            <span class="badge">{{ total_urls }}</span>
+          <div class="section-title">&#128218; Wayback Machine URLs</div>
+          <span class="badge">{{ total_urls }}</span>
         </div>
         <div class="section-body">
-            {% if wayback_urls %}
-            <table>
-                <tr><th>URL</th></tr>
-                {% for url in wayback_urls %}
-                <tr>
-                    <td><a href="{{ url }}" target="_blank">{{ url }}</a></td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <div class="empty">No URLs found</div>
-            {% endif %}
+          {% if wayback_urls %}
+          <table>
+            <tr>
+              <th>URL</th>
+            </tr>
+            {% for url in wayback_urls %}
+            <tr>
+              <td><a href="{{ url }}" target="_blank">{{ url }}</a></td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <div class="empty">No URLs found</div>
+          {% endif %}
         </div>
-    </div>
+      </div>
 
-    <!-- Technologies -->
-    <div class="section">
+      <!-- WHOIS -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#9881; Technologies</div>
-            <span class="badge">{{ total_techs }}</span>
+          <div class="section-title">&#128269; WHOIS</div>
+          <span class="badge">Info</span>
         </div>
         <div class="section-body">
-            {% if technologies %}
-            <div class="subdomain-grid">
-                {% for tech in technologies %}
-                <div class="subdomain-item" style="color: #a371f7;">{{ tech }}</div>
+          {% if whois %}
+          <table>
+            <tr>
+              <th>Field</th>
+              <th>Value</th>
+            </tr>
+            <tr>
+              <td>Registrar</td>
+              <td>{{ whois.registrar }}</td>
+            </tr>
+            <tr>
+              <td>Organization</td>
+              <td>{{ whois.org }}</td>
+            </tr>
+            <tr>
+              <td>Country</td>
+              <td>{{ whois.country }}</td>
+            </tr>
+            <tr>
+              <td>Created</td>
+              <td>{{ whois.creation_date }}</td>
+            </tr>
+            <tr>
+              <td>Expires</td>
+              <td>{{ whois.expiration_date }}</td>
+            </tr>
+            <tr>
+              <td>Updated</td>
+              <td>{{ whois.updated_date }}</td>
+            </tr>
+            <tr>
+              <td>Name Servers</td>
+              <td>
+                {% for ns in whois.name_servers %}
+                <div style="font-family: monospace; font-size: 12px">
+                  {{ ns }}
+                </div>
                 {% endfor %}
-            </div>
-            {% else %}
-            <div class="empty">No technologies detected</div>
-            {% endif %}
+              </td>
+            </tr>
+          </table>
+          {% else %}
+          <div class="empty">No WHOIS data found</div>
+          {% endif %}
         </div>
-    </div>
+      </div>
 
-    <!-- Emails -->
-    <div class="section">
+      <!-- Technologies -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#128231; Emails</div>
-            <span class="badge">{{ total_emails }}</span>
+          <div class="section-title">&#9881; Technologies</div>
+          <span class="badge">{{ total_techs }}</span>
         </div>
         <div class="section-body">
-            {% if emails %}
-            <table>
-                <tr>
-                    <th>Email</th>
-                    <th>Type</th>
-                    <th>Confidence</th>
-                </tr>
-                {% for email in emails %}
-                <tr>
-                    <td>{{ email.email }}</td>
-                    <td>{{ email.type }}</td>
-                    <td>
-                        <span style="color: {% if email.confidence > 70 %}#3fb950{% elif email.confidence > 40 %}#e3b341{% else %}#ff7b72{% endif %}">
-                            {{ email.confidence }}%
-                        </span>
-                    </td>
-                </tr>
-                {% endfor %}
-            </table>
-            {% else %}
-            <div class="empty">No emails found</div>
-            {% endif %}
+          {% if technologies %}
+          <div class="subdomain-grid">
+            {% for tech in technologies %}
+            <div class="subdomain-item" style="color: #a371f7">{{ tech }}</div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="empty">No technologies detected</div>
+          {% endif %}
         </div>
-    </div>
+      </div>
 
-    <!-- DNS Records -->
-    <div class="section">
+      <!-- Emails -->
+      <div class="section">
         <div class="section-header">
-            <div class="section-title">&#127758; DNS Records</div>
-            <span class="badge">{{ dns | length }}</span>
+          <div class="section-title">&#128231; Emails</div>
+          <span class="badge">{{ total_emails }}</span>
         </div>
         <div class="section-body">
-            {% if dns %}
-            <table>
-                <tr>
-                    <th>Type</th>
-                    <th>Records</th>
-                </tr>
-                {% for type, records in dns.items() %}
-                {% if records %}
-                <tr>
-                    <td><span style="color: #a371f7; font-weight: 600;">{{ type }}</span></td>
-                    <td>
-                        {% for record in records %}
-                        <div style="font-family: monospace; font-size: 12px;">{{ record }}</div>
-                        {% endfor %}
-                    </td>
-                </tr>
-                {% endif %}
-                {% endfor %}
-            </table>
-            {% else %}
-            <div class="empty">No DNS records found</div>
-            {% endif %}
+          {% if emails %}
+          <table>
+            <tr>
+              <th>Email</th>
+              <th>Type</th>
+              <th>Confidence</th>
+            </tr>
+            {% for email in emails %}
+            <tr>
+              <td>{{ email.email }}</td>
+              <td>{{ email.type }}</td>
+              <td>
+                <span
+                  style="color: {% if email.confidence > 70 %}#3fb950{% elif email.confidence > 40 %}#e3b341{% else %}#ff7b72{% endif %}"
+                >
+                  {{ email.confidence }}%
+                </span>
+              </td>
+            </tr>
+            {% endfor %}
+          </table>
+          {% else %}
+          <div class="empty">No emails found</div>
+          {% endif %}
         </div>
+      </div>
+
+      <!-- DNS Records -->
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">&#127758; DNS Records</div>
+          <span class="badge">{{ dns | length }}</span>
+        </div>
+        <div class="section-body">
+          {% if dns %}
+          <table>
+            <tr>
+              <th>Type</th>
+              <th>Records</th>
+            </tr>
+            {% for type, records in dns.items() %} {% if records %}
+            <tr>
+              <td>
+                <span style="color: #a371f7; font-weight: 600">{{ type }}</span>
+              </td>
+              <td>
+                {% for record in records %}
+                <div style="font-family: monospace; font-size: 12px">
+                  {{ record }}
+                </div>
+                {% endfor %}
+              </td>
+            </tr>
+            {% endif %} {% endfor %}
+          </table>
+          {% else %}
+          <div class="empty">No DNS records found</div>
+          {% endif %}
+        </div>
+      </div>
     </div>
 
-</div>
-
-<footer>
-    &#9889; Lumina Passive Recon Tool -- for legal use only
-</footer>
-
-</body>
+    <footer>&#9889; Lumina Passive Recon Tool -- for legal use only</footer>
+  </body>
 </html>

@@ -1,5 +1,6 @@
 import httpx
 
+
 async def get_wayback_urls(domain: str):
     try:
         async with httpx.AsyncClient(timeout=15) as client:
@@ -10,8 +11,8 @@ async def get_wayback_urls(domain: str):
                     "output": "json",
                     "fl": "original",
                     "collapse": "urlkey",
-                    "limit": "150"
-                }
+                    "limit": "150",
+                },
             )
             data = r.json()
             urls = [x[0] for x in data[1:]]

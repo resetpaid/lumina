@@ -13,16 +13,18 @@ Lumina collects data exclusively from third-party public sources, making it comp
 
 ## 🔍 Features
 
-| Module                | Source                            | API Key |
-| --------------------- | --------------------------------- | ------- |
-| Subdomain Enumeration | crt.sh Certificate Transparency   | ❌ Free |
-| Wayback Machine URLs  | web.archive.org                   | ❌ Free |
-| GitHub Leaks          | GitHub Search API                 | ✅ Free |
-| Shodan Hosts & Ports  | Shodan API                        | ✅ Free |
-| Email Harvesting      | Hunter.io API                     | ✅ Free |
-| DNS Records           | Google DNS (A, MX, NS, TXT, AAAA) | ❌ Free |
-| Tech Stack Detection  | HTTP headers & HTML analysis      | ❌ Free |
-| HTML Report           | Beautiful dark-theme report       | ❌ —    |
+| Module                | Source                                 | API Key |
+| --------------------- | -------------------------------------- | ------- |
+| Subdomain Enumeration | crt.sh + HackerTarget + AlienVault OTX | ❌ Free |
+| Wayback Machine URLs  | web.archive.org                        | ❌ Free |
+| GitHub Leaks          | GitHub Search API                      | ✅ Free |
+| Shodan Hosts & Ports  | Shodan API                             | ✅ Free |
+| Email Harvesting      | Hunter.io API                          | ✅ Free |
+| DNS Records           | Google DNS (A, MX, NS, TXT, AAAA)      | ❌ Free |
+| Tech Stack Detection  | HTTP headers & HTML analysis           | ❌ Free |
+| WHOIS Lookup          | python-whois                           | ❌ Free |
+| HTML Report           | Beautiful dark-theme report            | ❌ —    |
+| JSON Export           | Automatic alongside HTML               | ❌ —    |
 
 ---
 
@@ -106,18 +108,23 @@ All API keys are **free**:
 lumina/
 ├── main.py                 # CLI entry point
 ├── modules/
-│   ├── subdomains.py       # crt.sh subdomain enumeration
+│   ├── subdomains.py       # crt.sh + HackerTarget + AlienVault
 │   ├── wayback.py          # Wayback Machine URLs
 │   ├── github_leaks.py     # GitHub leaked secrets search
 │   ├── shodan.py           # Shodan hosts & ports
 │   ├── emails.py           # Hunter.io email harvesting
 │   ├── dns_lookup.py       # DNS records (A, MX, NS, TXT, AAAA)
-│   └── tech_detect.py      # Technology stack detection
+│   ├── tech_detect.py      # Technology stack detection
+│   └── whois_lookup.py     # WHOIS registrar & domain info
 ├── report/
-│   ├── generator.py        # Jinja2 report generator
+│   ├── generator.py        # HTML + JSON report generator
 │   └── template.html       # Dark-theme HTML template
+├── reports/                # Output directory
+├── Dockerfile
+├── docker-compose.yml
 ├── .env.example
 ├── requirements.txt
+├── CONTRIBUTING.md
 └── README.md
 ```
 
@@ -145,19 +152,20 @@ async def your_module(domain: str):
 
 ## 🗺️ Roadmap
 
-### v1.1
+### v1.1 ✅ Completed
 
-- [ ] VirusTotal integration — malware & reputation check
-- [ ] WHOIS lookup — registrar, creation date, owner info
-- [ ] Pastebin & GitHub Gist monitoring
-- [ ] JSON export alongside HTML report
+- [x] WHOIS lookup — registrar, creation date, owner info
+- [x] JSON export alongside HTML report
+- [x] Multiple subdomain sources (HackerTarget, AlienVault OTX)
+- [x] Docker support
 
 ### v1.2
 
+- [ ] VirusTotal integration — malware & reputation check
+- [ ] Pastebin & GitHub Gist monitoring
 - [ ] SecurityTrails API support
 - [ ] Slack / Telegram notifications when scan completes
 - [ ] Multiple domains scan at once
-- [ ] Docker support — `docker run lumina -d example.com`
 
 ### v2.0
 
