@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Report — {{ domain }}</title>
+    <title>Lumina Report -- {{ domain }}</title>
     <style>
+{% raw %}
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
         body {
             background: #0d1117;
             color: #c9d1d9;
@@ -49,7 +50,7 @@
 
         .stats {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-bottom: 40px;
         }
@@ -190,12 +191,13 @@
             font-size: 12px;
             border-top: 1px solid #21262d;
         }
+{% endraw %}
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">⚡ Lumina</div>
+    <div class="logo">&#9889; Lumina</div>
     <div class="meta">
         <div>Target: <span>{{ domain }}</span></div>
         <div>Generated: <span>{{ generated_at }}</span></div>
@@ -221,11 +223,20 @@
             <div class="number">{{ total_hosts }}</div>
             <div class="label">Shodan Hosts</div>
         </div>
+        <div class="stat-card">
+            <div class="number">{{ total_emails }}</div>
+            <div class="label">Emails</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">{{ total_techs }}</div>
+            <div class="label">Technologies</div>
+        </div>
     </div>
 
+    <!-- Subdomains -->
     <div class="section">
         <div class="section-header">
-            <div class="section-title">🔍 Subdomains</div>
+            <div class="section-title">&#128269; Subdomains</div>
             <span class="badge">{{ total_subdomains }}</span>
         </div>
         <div class="section-body">
@@ -241,9 +252,10 @@
         </div>
     </div>
 
+    <!-- GitHub Leaks -->
     <div class="section">
         <div class="section-header">
-            <div class="section-title">🔑 GitHub Leaks</div>
+            <div class="section-title">&#128273; GitHub Leaks</div>
             <span class="badge {% if total_leaks > 0 %}red{% else %}green{% endif %}">
                 {{ total_leaks }}
             </span>
@@ -260,19 +272,20 @@
                 <tr>
                     <td>{{ leak.repo }}</td>
                     <td><code>{{ leak.query }}</code></td>
-                    <td><a href="{{ leak.url }}" target="_blank">Open →</a></td>
+                    <td><a href="{{ leak.url }}" target="_blank">Open &rarr;</a></td>
                 </tr>
                 {% endfor %}
             </table>
             {% else %}
-            <div class="empty">✓ No leaks found</div>
+            <div class="empty">&#10003; No leaks found</div>
             {% endif %}
         </div>
     </div>
 
+    <!-- Shodan Hosts -->
     <div class="section">
         <div class="section-header">
-            <div class="section-title">🌐 Shodan Hosts</div>
+            <div class="section-title">&#127760; Shodan Hosts</div>
             <span class="badge">{{ total_hosts }}</span>
         </div>
         <div class="section-body">
@@ -299,9 +312,10 @@
         </div>
     </div>
 
+    <!-- Wayback Machine URLs -->
     <div class="section">
         <div class="section-header">
-            <div class="section-title">📚 Wayback Machine URLs</div>
+            <div class="section-title">&#128218; Wayback Machine URLs</div>
             <span class="badge">{{ total_urls }}</span>
         </div>
         <div class="section-body">
@@ -320,10 +334,93 @@
         </div>
     </div>
 
+    <!-- Technologies -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">&#9881; Technologies</div>
+            <span class="badge">{{ total_techs }}</span>
+        </div>
+        <div class="section-body">
+            {% if technologies %}
+            <div class="subdomain-grid">
+                {% for tech in technologies %}
+                <div class="subdomain-item" style="color: #a371f7;">{{ tech }}</div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty">No technologies detected</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Emails -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">&#128231; Emails</div>
+            <span class="badge">{{ total_emails }}</span>
+        </div>
+        <div class="section-body">
+            {% if emails %}
+            <table>
+                <tr>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Confidence</th>
+                </tr>
+                {% for email in emails %}
+                <tr>
+                    <td>{{ email.email }}</td>
+                    <td>{{ email.type }}</td>
+                    <td>
+                        <span style="color: {% if email.confidence > 70 %}#3fb950{% elif email.confidence > 40 %}#e3b341{% else %}#ff7b72{% endif %}">
+                            {{ email.confidence }}%
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="empty">No emails found</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- DNS Records -->
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">&#127758; DNS Records</div>
+            <span class="badge">{{ dns | length }}</span>
+        </div>
+        <div class="section-body">
+            {% if dns %}
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Records</th>
+                </tr>
+                {% for type, records in dns.items() %}
+                {% if records %}
+                <tr>
+                    <td><span style="color: #a371f7; font-weight: 600;">{{ type }}</span></td>
+                    <td>
+                        {% for record in records %}
+                        <div style="font-family: monospace; font-size: 12px;">{{ record }}</div>
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="empty">No DNS records found</div>
+            {% endif %}
+        </div>
+    </div>
+
 </div>
 
 <footer>
-    ⚡ Lumina Passive Recon Tool — for legal use only
+    &#9889; Lumina Passive Recon Tool -- for legal use only
 </footer>
 
 </body>

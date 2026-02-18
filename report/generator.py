@@ -18,11 +18,16 @@ def generate_report(results: dict, output: str):
         github_leaks=results["github_leaks"],
         shodan_subdomains=results["shodan"]["subdomains"],
         shodan_hosts=results["shodan"]["hosts"],
+        dns=results["dns"],
+        emails=results["emails"],
+        technologies=results["technologies"],
         generated_at=datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
         total_subdomains=len(results["subdomains"]),
         total_urls=len(results["wayback_urls"]),
         total_leaks=len(results["github_leaks"]),
-        total_hosts=len(results["shodan"]["hosts"])
+        total_hosts=len(results["shodan"]["hosts"]),
+        total_emails=len(results["emails"]),
+        total_techs=len(results["technologies"])
     )
     
     with open(output, "w", encoding="utf-8") as f:
