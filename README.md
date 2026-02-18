@@ -28,9 +28,7 @@ Lumina collects data exclusively from third-party public sources, making it comp
 
 ## 📸 Preview
 
-> _(add screenshot of your report here)_
-
----
+## ![lumina banner](report_example.jpg)
 
 ## 🚀 Installation
 
