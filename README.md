@@ -53,6 +53,8 @@ HUNTER_API_KEY=your_hunter_api_key
 
 ## ⚙️ Usage
 
+### Python
+
 ```bash
 # Basic scan
 python main.py -d example.com
@@ -65,6 +67,23 @@ python main.py -d example.com --skip-github
 
 # Skip Shodan search
 python main.py -d example.com --skip-shodan
+```
+
+### 🐳 Docker
+
+```bash
+# Build
+docker build -t lumina .
+
+# Run — report will be saved to ./reports/
+docker run --env-file .env -v $(pwd)/reports:/app/reports lumina -d example.com -o reports/report.html
+```
+
+### 🐳 Docker Compose
+
+```bash
+# Edit docker-compose.yml and set your domain, then:
+docker-compose run lumina -d example.com -o reports/report.html
 ```
 
 ---
