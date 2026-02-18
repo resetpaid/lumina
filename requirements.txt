@@ -1,0 +1,4 @@
+httpx
+click
+jinja2
+rich

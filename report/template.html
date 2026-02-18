@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumina Report — {{ domain }}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        header {
+            background: linear-gradient(135deg, #161b22, #1f2937);
+            border-bottom: 1px solid #30363d;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #58a6ff, #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta {
+            text-align: right;
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .meta span {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+
+        .stat-card:hover { border-color: #58a6ff; }
+
+        .stat-card .number {
+            font-size: 42px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #58a6ff, #a371f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-card .label {
+            font-size: 13px;
+            color: #8b949e;
+            margin-top: 6px;
+        }
+
+        .section {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+
+        .section-header {
+            padding: 16px 24px;
+            background: #1f2937;
+            border-bottom: 1px solid #30363d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #e6edf3;
+        }
+
+        .badge {
+            background: #388bfd1a;
+            color: #58a6ff;
+            border: 1px solid #388bfd66;
+            border-radius: 20px;
+            padding: 2px 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .badge.red {
+            background: #f851491a;
+            color: #ff7b72;
+            border-color: #f8514966;
+        }
+
+        .badge.green {
+            background: #2ea04326;
+            color: #3fb950;
+            border-color: #2ea04366;
+        }
+
+        .section-body {
+            padding: 20px 24px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            text-align: left;
+            padding: 10px 12px;
+            color: #8b949e;
+            border-bottom: 1px solid #30363d;
+            font-weight: 500;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #21262d;
+            word-break: break-all;
+        }
+
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #1f2937; }
+
+        a {
+            color: #58a6ff;
+            text-decoration: none;
+        }
+
+        a:hover { text-decoration: underline; }
+
+        .subdomain-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+        }
+
+        .subdomain-item {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 12px;
+            font-family: monospace;
+            color: #3fb950;
+        }
+
+        .empty {
+            text-align: center;
+            color: #8b949e;
+            padding: 30px;
+            font-size: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #8b949e;
+            font-size: 12px;
+            border-top: 1px solid #21262d;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">⚡ Lumina</div>
+    <div class="meta">
+        <div>Target: <span>{{ domain }}</span></div>
+        <div>Generated: <span>{{ generated_at }}</span></div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="number">{{ total_subdomains }}</div>
+            <div class="label">Subdomains</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">{{ total_urls }}</div>
+            <div class="label">Wayback URLs</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">{{ total_leaks }}</div>
+            <div class="label">GitHub Leaks</div>
+        </div>
+        <div class="stat-card">
+            <div class="number">{{ total_hosts }}</div>
+            <div class="label">Shodan Hosts</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">🔍 Subdomains</div>
+            <span class="badge">{{ total_subdomains }}</span>
+        </div>
+        <div class="section-body">
+            {% if subdomains %}
+            <div class="subdomain-grid">
+                {% for sub in subdomains %}
+                <div class="subdomain-item">{{ sub }}</div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="empty">No subdomains found</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">🔑 GitHub Leaks</div>
+            <span class="badge {% if total_leaks > 0 %}red{% else %}green{% endif %}">
+                {{ total_leaks }}
+            </span>
+        </div>
+        <div class="section-body">
+            {% if github_leaks %}
+            <table>
+                <tr>
+                    <th>Repository</th>
+                    <th>Query</th>
+                    <th>Link</th>
+                </tr>
+                {% for leak in github_leaks %}
+                <tr>
+                    <td>{{ leak.repo }}</td>
+                    <td><code>{{ leak.query }}</code></td>
+                    <td><a href="{{ leak.url }}" target="_blank">Open →</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="empty">✓ No leaks found</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">🌐 Shodan Hosts</div>
+            <span class="badge">{{ total_hosts }}</span>
+        </div>
+        <div class="section-body">
+            {% if shodan_hosts %}
+            <table>
+                <tr>
+                    <th>IP</th>
+                    <th>Port</th>
+                    <th>Organization</th>
+                    <th>OS</th>
+                </tr>
+                {% for host in shodan_hosts %}
+                <tr>
+                    <td>{{ host.ip }}</td>
+                    <td>{{ host.ports }}</td>
+                    <td>{{ host.org }}</td>
+                    <td>{{ host.os }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="empty">No hosts found</div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <div class="section-title">📚 Wayback Machine URLs</div>
+            <span class="badge">{{ total_urls }}</span>
+        </div>
+        <div class="section-body">
+            {% if wayback_urls %}
+            <table>
+                <tr><th>URL</th></tr>
+                {% for url in wayback_urls %}
+                <tr>
+                    <td><a href="{{ url }}" target="_blank">{{ url }}</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+            {% else %}
+            <div class="empty">No URLs found</div>
+            {% endif %}
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    ⚡ Lumina Passive Recon Tool — for legal use only
+</footer>
+
+</body>
+</html>
