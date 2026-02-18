@@ -30,6 +30,8 @@ Lumina collects data exclusively from third-party public sources, making it comp
 
 ## ![lumina banner](report_example.jpg)
 
+---
+
 ## 🚀 Installation
 
 ```bash

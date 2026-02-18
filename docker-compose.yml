@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  lumina:
+    build: .
+    volumes:
+      - ./reports:/app/reports
+    env_file:
+      - .env
